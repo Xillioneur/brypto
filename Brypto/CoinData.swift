@@ -46,10 +46,22 @@ class CoinData {
       }
     }
   }
+
+  func doubleToMoneyString(double: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.locale = Locale(identifier: "en_US")
+    formatter.numberStyle = .currency
+    if let fancyPrice = formatter.string(from: NSNumber(floatLiteral: double)) {
+      return fancyPrice
+    } else {
+      return "ERROR"
+    }
+  }
 }
 
 @objc protocol CoinDataDelegate: class {
   @objc optional func newPrices()
+  @objc optional func newHistory()
 }
 
 /// Crypto coin model.
@@ -67,18 +79,28 @@ class Coin {
     }
   }
 
+  func getHistoricalDta() {
+    AF.request("https://min-api.cryptocompare.com/data/histoday?fsym=\(symbol)&tsym=USD&limit=30&api_key=3c8aafbac23bdca28210a68eb91ccf44ba94034b4ec388b1a032c6517bb47e0e").responseJSON { (response) in
+      if let json = response.result.value as? [String: Any] {
+        if let pricesJSON = json["Data"] as? [[String:Double]] {
+          self.historicalData = []
+          for priceJSON in pricesJSON {
+            if let closePrice = priceJSON["close"] {
+              self.historicalData.append(closePrice)
+            }
+          }
+          CoinData.shared.delegate?.newHistory?()
+
+        }
+      }
+    }
+  }
+
   func priceAsString() -> String {
     if price == 0.0 {
       return "Loading..."
     }
 
-    let formatter = NumberFormatter()
-    formatter.locale = Locale(identifier: "en_US")
-    formatter.numberStyle = .currency
-    if let fancyPrice = formatter.string(from: NSNumber(floatLiteral: price)) {
-      return fancyPrice
-    } else {
-      return "ERROR"
-    }
+    return CoinData.shared.doubleToMoneyString(double: price)
   }
 }

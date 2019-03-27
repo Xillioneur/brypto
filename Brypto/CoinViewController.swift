@@ -11,7 +11,7 @@ import SwiftChart
 
 private let chartHeight: CGFloat = 300.0
 
-class CoinViewController: UIViewController {
+class CoinViewController: UIViewController, CoinDataDelegate {
 
   var chart = Chart()
   var coin: Coin?
@@ -19,13 +19,26 @@ class CoinViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    CoinData.shared.delegate = self
+    edgesForExtendedLayout = []
     view.backgroundColor = UIColor.white
 
     chart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: chartHeight)
-    let series = ChartSeries([0, 6, 2, 8, 4, 7, 3, 10, 8])
-    series.color = ChartColors.greenColor()
-    chart.add(series)
+    chart.yLabelsFormatter = { CoinData.shared.doubleToMoneyString(double: $1)}
+    chart.xLabels = [30, 25, 20, 15, 10, 5, 0]
+    chart.xLabelsFormatter = { String(Int(round(30 - $1))) + "d" }
     view.addSubview(chart)
+
+    coin?.getHistoricalDta()
+  }
+
+  func newHistory() {
+    if let coin = coin{
+      let series = ChartSeries(coin.historicalData)
+      series.area = true
+//      series.color = ChartColors.greenColor()
+      chart.add(series)
+    }
   }
 
 }
