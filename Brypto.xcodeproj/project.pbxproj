@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1417DA9A09029EC7CA04D215 /* Pods_Brypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545846446D9EED6E1336635F /* Pods_Brypto.framework */; };
+		3D59FE94224C2200007A4171 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59FE93224C2200007A4171 /* CoinViewController.swift */; };
 		3DA5743B224AF09200552E13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5743A224AF09200552E13 /* AppDelegate.swift */; };
 		3DA57442224AF09600552E13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA57441224AF09600552E13 /* Assets.xcassets */; };
 		3DA57445224AF09600552E13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA57443224AF09600552E13 /* LaunchScreen.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D59FE93224C2200007A4171 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
 		3DA57437224AF09200552E13 /* Brypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA5743A224AF09200552E13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA57441224AF09600552E13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				3DA57446224AF09600552E13 /* Info.plist */,
 				3DA57450224B3BF600552E13 /* CoinData.swift */,
 				3DA57452224B3C5600552E13 /* CryptoTableViewController.swift */,
+				3D59FE93224C2200007A4171 /* CoinViewController.swift */,
 			);
 			path = Brypto;
 			sourceTree = "<group>";
@@ -182,10 +185,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Brypto/Pods-Brypto-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -202,6 +207,7 @@
 				3DA57453224B3C5600552E13 /* CryptoTableViewController.swift in Sources */,
 				3DA57451224B3BF600552E13 /* CoinData.swift in Sources */,
 				3DA5743B224AF09200552E13 /* AppDelegate.swift in Sources */,
+				3D59FE94224C2200007A4171 /* CoinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

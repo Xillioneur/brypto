@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "588B17CB610749ABCF8F770E5F2B8E13"
+               BlueprintIdentifier = "4BE4BE050B7A70C6DF6CCFC4B6612D36"
                BuildableName = "Pods_Brypto.framework"
                BlueprintName = "Pods-Brypto"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "588B17CB610749ABCF8F770E5F2B8E13"
+            BlueprintIdentifier = "4BE4BE050B7A70C6DF6CCFC4B6612D36"
             BuildableName = "Pods_Brypto.framework"
             BlueprintName = "Pods-Brypto"
             ReferencedContainer = "container:Pods.xcodeproj">

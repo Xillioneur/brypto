@@ -23,7 +23,6 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
   }
 
   // MARK: - Table view data source
-
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return CoinData.shared.coins.count
   }
@@ -40,5 +39,10 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
     return cell
   }
 
-
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let coinVC = CoinViewController()
+    coinVC.coin = CoinData.shared.coins[indexPath.row]
+    
+    navigationController?.pushViewController(coinVC, animated: true)
+  }
 }
