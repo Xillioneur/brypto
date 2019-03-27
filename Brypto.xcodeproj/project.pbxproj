@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1417DA9A09029EC7CA04D215 /* Pods_Brypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545846446D9EED6E1336635F /* Pods_Brypto.framework */; };
 		3DA5743B224AF09200552E13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5743A224AF09200552E13 /* AppDelegate.swift */; };
 		3DA57442224AF09600552E13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA57441224AF09600552E13 /* Assets.xcassets */; };
 		3DA57445224AF09600552E13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA57443224AF09600552E13 /* LaunchScreen.storyboard */; };
@@ -22,6 +23,9 @@
 		3DA57446224AF09600552E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DA57450224B3BF600552E13 /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
 		3DA57452224B3C5600552E13 /* CryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewController.swift; sourceTree = "<group>"; };
+		545846446D9EED6E1336635F /* Pods_Brypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		656265D68FC425224596AF19 /* Pods-Brypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brypto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brypto/Pods-Brypto.debug.xcconfig"; sourceTree = "<group>"; };
+		7453BFCB4D374669219E9579 /* Pods-Brypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brypto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brypto/Pods-Brypto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1417DA9A09029EC7CA04D215 /* Pods_Brypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				3DA57439224AF09200552E13 /* Brypto */,
 				3DA57438224AF09200552E13 /* Products */,
+				BC629B601F0EE6B014A7DFDB /* Pods */,
+				AA8C5F27C98A767595C1E3C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = Brypto;
 			sourceTree = "<group>";
 		};
+		AA8C5F27C98A767595C1E3C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				545846446D9EED6E1336635F /* Pods_Brypto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC629B601F0EE6B014A7DFDB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				656265D68FC425224596AF19 /* Pods-Brypto.debug.xcconfig */,
+				7453BFCB4D374669219E9579 /* Pods-Brypto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DA57449224AF09600552E13 /* Build configuration list for PBXNativeTarget "Brypto" */;
 			buildPhases = (
+				618B29F17B4D7B6385C9F98A /* [CP] Check Pods Manifest.lock */,
 				3DA57433224AF09200552E13 /* Sources */,
 				3DA57434224AF09200552E13 /* Frameworks */,
 				3DA57435224AF09200552E13 /* Resources */,
+				A354F4EC4ED0E4E5D2E3A13E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +154,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		618B29F17B4D7B6385C9F98A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Brypto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A354F4EC4ED0E4E5D2E3A13E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Brypto/Pods-Brypto-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Brypto/Pods-Brypto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3DA57433224AF09200552E13 /* Sources */ = {
@@ -272,12 +337,13 @@
 		};
 		3DA5744A224AF09600552E13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 656265D68FC425224596AF19 /* Pods-Brypto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RFQY6T2L4D;
 				INFOPLIST_FILE = Brypto/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -291,12 +357,13 @@
 		};
 		3DA5744B224AF09600552E13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7453BFCB4D374669219E9579 /* Pods-Brypto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RFQY6T2L4D;
 				INFOPLIST_FILE = Brypto/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
