@@ -23,6 +23,15 @@ class CoinData {
     }
   }
 
+  func netWorthAsString() -> String {
+    var netWorth = 0.0
+    for coin in coins {
+      netWorth += coin.amount * coin.price
+    }
+
+    return doubleToMoneyString(double: netWorth)
+  }
+
   /// Grab crpyto prices from cryptocompare API.
   func getPrices() {
     var listOfSymbols = ""
@@ -57,6 +66,7 @@ class CoinData {
       return "ERROR"
     }
   }
+
 }
 
 @objc protocol CoinDataDelegate: class {

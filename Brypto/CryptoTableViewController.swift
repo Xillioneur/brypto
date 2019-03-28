@@ -7,22 +7,86 @@
 //
 
 import UIKit
+import LocalAuthentication
+
+private let headerHeight: CGFloat = 100.0
+private let netWorthHeight: CGFloat = 100.0
 
 class CryptoTableViewController: UITableViewController, CoinDataDelegate {
+
+  var amountLabel = UILabel()
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     CoinData.shared.getPrices()
+
+    let context = LAContext()
+    var error: NSError?
+
+    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+      updateSecureButton()
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
     CoinData.shared.delegate = self
     tableView.reloadData()
+    displayNetWorth()
+  }
+
+  func updateSecureButton() {
+    if UserDefaults.standard.bool(forKey: "secure") {
+      navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Unsecure App", style: .plain, target: self, action: #selector(secureTapped))
+    } else {
+      navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Secure App", style: .plain, target: self, action: #selector(secureTapped))
+    }
+  }
+
+  @objc func secureTapped() {
+    if UserDefaults.standard.bool(forKey: "secure") {
+      UserDefaults.standard.set(false, forKey: "secure")
+    } else {
+      UserDefaults.standard.set(true, forKey: "secure")
+    }
+
+    updateSecureButton()
   }
 
   func newPrices() {
+    displayNetWorth()
     tableView.reloadData()
+  }
+
+  func createHeaderView() -> UIView {
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight))
+    headerView.backgroundColor = UIColor.white
+
+    let networthLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: netWorthHeight))
+    networthLabel.text = "My Crypto Net Worth"
+    networthLabel.textAlignment = .center
+    headerView.addSubview(networthLabel)
+
+    amountLabel.frame = CGRect(x: 0, y: netWorthHeight, width: view.frame.size.width, height: headerHeight - netWorthHeight)
+    amountLabel.textAlignment = .center
+    amountLabel.font = UIFont.boldSystemFont(ofSize: 60.0)
+    headerView.addSubview(amountLabel)
+
+    displayNetWorth()
+
+    return headerView
+  }
+
+  func displayNetWorth() {
+    amountLabel.text = CoinData.shared.netWorthAsString()
+  }
+
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return headerHeight
+  }
+
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    return createHeaderView()
   }
 
   // MARK: - Table view data source
@@ -35,9 +99,13 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
 
     let coin = CoinData.shared.coins[indexPath.row]
 
-    cell.textLabel?.text = "\(coin.symbol) - \(coin.priceAsString())"
-    cell.imageView?.image = coin.image
+    if coin.amount != 0.0 {
+      cell.textLabel?.text = "\(coin.symbol) - \(coin.priceAsString()) - \(coin.amount)"
+    } else {
+      cell.textLabel?.text = "\(coin.symbol) - \(coin.priceAsString())"
+    }
 
+    cell.imageView?.image = coin.image
 
     return cell
   }
