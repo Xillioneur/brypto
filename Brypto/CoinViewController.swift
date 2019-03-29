@@ -77,6 +77,7 @@ class CoinViewController: UIViewController, CoinDataDelegate {
       guard let amount = Double(text) else { return }
 
       self.coin?.amount = amount
+      UserDefaults.standard.set(amount, forKey: coin.symbol + "amount")
       self.newPrices()
     }))
     self.present(alert, animated: true, completion: nil)
