@@ -32,7 +32,7 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
   }
 
   @objc func reportTapped() {
-    let formatter = UIMarkupTextPrintFormatter(markupText: "Hello World")
+    let formatter = UIMarkupTextPrintFormatter(markupText: CoinData.shared.html())
     let render = UIPrintPageRenderer()
     render.addPrintFormatter(formatter, startingAtPageAt: 0)
     let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8)

@@ -23,6 +23,19 @@ class CoinData {
     }
   }
 
+  func html() -> String {
+    var html = "<h1>My Brypto Report</h1>"
+    html += "<h2>Net Worth: \(netWorthAsString())</h2>"
+    html += "<ul>"
+    for coin in coins {
+      if coin.amount != 0.0 {
+        html += "<li>\(coin.symbol) - I won: \(coin.amount) - Valued at: \(doubleToMoneyString(double: coin.amount * coin.price))</li>"
+      }
+    }
+    html += "/<ul>"
+    return html
+  }
+
   func netWorthAsString() -> String {
     var netWorth = 0.0
     for coin in coins {
