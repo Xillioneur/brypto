@@ -56,17 +56,16 @@ class CoinData {
     }
 
     AF.request("https://min-api.cryptocompare.com/data/pricemulti?fsyms=\(listOfSymbols)&tsyms=USD&api_key=3c8aafbac23bdca28210a68eb91ccf44ba94034b4ec388b1a032c6517bb47e0e").responseJSON { (response) in
-      if let json = response.result.value as? [String: Any] {
-        for coin in self.coins {
-          if let coinJSON = json[coin.symbol] as? [String: Double] {
-            if let price = coinJSON["USD"] {
-              coin.price = price
-              UserDefaults.standard.set(price, forKey: coin.symbol)
-            }
-          }
+      guard let json = response.result.value as? [String: Any] else { return }
+      for coin in self.coins {
+        guard let coinJSON = json[coin.symbol] as? [String: Double] else { return }
+
+        if let price = coinJSON["USD"] {
+          coin.price = price
+          UserDefaults.standard.set(price, forKey: coin.symbol)
         }
-        self.delegate?.newPrices?()
       }
+      self.delegate?.newPrices?()
     }
   }
 
@@ -74,15 +73,15 @@ class CoinData {
     let formatter = NumberFormatter()
     formatter.locale = Locale(identifier: "en_US")
     formatter.numberStyle = .currency
-    if let fancyPrice = formatter.string(from: NSNumber(floatLiteral: double)) {
-      return fancyPrice
-    } else {
-      return "ERROR"
-    }
+
+    guard let fancyPrice = formatter.string(from: NSNumber(floatLiteral: double)) else { return "ERROR" }
+
+    return fancyPrice
   }
 
 }
 
+/// Delegate methods for accessing coin data.
 @objc protocol CoinDataDelegate: class {
   @objc optional func newPrices()
   @objc optional func newHistory()
@@ -90,12 +89,18 @@ class CoinData {
 
 /// Crypto coin model.
 class Coin {
+  /// The coin's symbol as String ex. BTC, LTH, ETH.
   var symbol = ""
+  /// The coin's icon.
   var image = UIImage()
+  /// The coin's current price on the market.
   var price = 0.0
+  /// How much you own of the coin.
   var amount = 0.0
+  /// The coin's historical data as an array of prices as doubles.
   var historicalData = [Double]()
 
+  /// Initialize coin with symbol string.
   init(symbol: String) {
     self.symbol = symbol
     if let image = UIImage(named: symbol) {
@@ -107,8 +112,12 @@ class Coin {
       self.historicalData = history
     }
   }
+}
 
-  func getHistoricalDta() {
+/// MARK: - Coin Methods
+extension Coin {
+  /// Grab the coin's historical data from API as
+  func getHistoricalData() {
     AF.request("https://min-api.cryptocompare.com/data/histoday?fsym=\(symbol)&tsym=USD&limit=30&api_key=3c8aafbac23bdca28210a68eb91ccf44ba94034b4ec388b1a032c6517bb47e0e").responseJSON { (response) in
       if let json = response.result.value as? [String: Any] {
         if let pricesJSON = json["Data"] as? [[String:Double]] {
@@ -125,6 +134,7 @@ class Coin {
     }
   }
 
+  /// Return the coin's price as String.
   func priceAsString() -> String {
     if price == 0.0 {
       return "Loading..."
@@ -133,6 +143,7 @@ class Coin {
     return CoinData.shared.doubleToMoneyString(double: price)
   }
 
+  /// Return the amount you own of the coin as String.
   func amountAsString() -> String {
     return CoinData.shared.doubleToMoneyString(double: amount * price)
   }
