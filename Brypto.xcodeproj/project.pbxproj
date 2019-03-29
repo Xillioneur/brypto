@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1417DA9A09029EC7CA04D215 /* Pods_Brypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545846446D9EED6E1336635F /* Pods_Brypto.framework */; };
+		3D4EF8D5224D606500685C87 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4EF8D4224D606500685C87 /* AuthViewController.swift */; };
 		3D59FE94224C2200007A4171 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59FE93224C2200007A4171 /* CoinViewController.swift */; };
 		3DA5743B224AF09200552E13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5743A224AF09200552E13 /* AppDelegate.swift */; };
 		3DA57442224AF09600552E13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA57441224AF09600552E13 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D4EF8D4224D606500685C87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3D59FE93224C2200007A4171 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
 		3DA57437224AF09200552E13 /* Brypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA5743A224AF09200552E13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				3DA57450224B3BF600552E13 /* CoinData.swift */,
 				3DA57452224B3C5600552E13 /* CryptoTableViewController.swift */,
 				3D59FE93224C2200007A4171 /* CoinViewController.swift */,
+				3D4EF8D4224D606500685C87 /* AuthViewController.swift */,
 			);
 			path = Brypto;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				3DA57453224B3C5600552E13 /* CryptoTableViewController.swift in Sources */,
 				3DA57451224B3BF600552E13 /* CoinData.swift in Sources */,
+				3D4EF8D5224D606500685C87 /* AuthViewController.swift in Sources */,
 				3DA5743B224AF09200552E13 /* AppDelegate.swift in Sources */,
 				3D59FE94224C2200007A4171 /* CoinViewController.swift in Sources */,
 			);

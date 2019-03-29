@@ -86,7 +86,7 @@ class CoinViewController: UIViewController, CoinDataDelegate {
     if let coin = coin{
       let series = ChartSeries(coin.historicalData)
       series.area = true
-      //      series.color = ChartColors.greenColor()
+      series.color = ChartColors.redColor()
       chart.add(series)
     }
   }
