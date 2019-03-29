@@ -59,11 +59,10 @@ class CoinData {
       guard let json = response.result.value as? [String: Any] else { return }
       for coin in self.coins {
         guard let coinJSON = json[coin.symbol] as? [String: Double] else { return }
+        guard let price = coinJSON["USD"] else { return }
 
-        if let price = coinJSON["USD"] {
-          coin.price = price
-          UserDefaults.standard.set(price, forKey: coin.symbol)
-        }
+        coin.price = price
+        UserDefaults.standard.set(price, forKey: coin.symbol)
       }
       self.delegate?.newPrices?()
     }

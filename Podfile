@@ -8,5 +8,6 @@ target 'Brypto' do
   # Pods for Brypto
   pod 'Alamofire', '~> 5.0.0-beta.3'
   pod "SwiftChart"
+  pod 'SwiftLint'
 
 end

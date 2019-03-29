@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.0.0-beta.3)
   - SwiftChart (1.0.1)
+  - SwiftLint (0.31.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.3)
   - SwiftChart
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - SwiftChart
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 50d6fa7e8cbe7f84559e86ab641ffd029db655f8
   SwiftChart: ba767a678d568a5ee22d419e146a0582865e1aff
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 079bf5bf6ef6db2fdde4eb0b2066b747d932c500
+PODFILE CHECKSUM: 7ee6f68fdf2d77584e5375fbd6574a6adb0d85e1
 
 COCOAPODS: 1.5.2

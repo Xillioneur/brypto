@@ -57,7 +57,7 @@ class CoinViewController: UIViewController, CoinDataDelegate {
     worthLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
     view.addSubview(worthLabel)
 
-    coin.getHistoricalDta()
+    coin.getHistoricalData()
     newPrices()
   }
 
